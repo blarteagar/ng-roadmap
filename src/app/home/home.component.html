@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 my-3">
+      <app-form-new-item
+      [selection]="selection"
+      (updateItemEvent)="updateCity($event)"
+      (newItemEvent)="addNewCity($event)" [label]="'City'" [className]="'btn-info'">
+      </app-form-new-item>
+    </div>
+    <div class="col-md-6 my-3">
+      <input type="text" class="form-control" placeholder="Filter..." [(ngModel)]="criteria">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+        <app-cities *ngFor="let city of (cities | filter:criteria)"
+        (cityDeleteEvent)="onCityDelete($event)"
+        (citySelectedEvent)="onCitySelected($event)"
+        [city]="city" [selection]="selection"></app-cities>
+    </div>
+    <div class="col-md-4">
+      <div *ngIf="selection?.name">
+        <p>Your city is {{selection?.name}}</p>
+        <app-button (click)="onClear()" [color]="'yellow'" [label]="'Clear Selection'">{{label}}</app-button>
+      </div>
+    </div>
+  </div>
+</div>

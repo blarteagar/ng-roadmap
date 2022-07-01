@@ -1,0 +1,19 @@
+.container {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.menu {
+  padding: 10px;
+}
+.selected {
+  background-color: crimson;
+  color: wheat;
+  padding: 10px;
+}
+
+.unselected {
+  background-color: wheat;
+  color: crimson;
+  padding: 10px;
+}
