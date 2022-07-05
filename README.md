@@ -1,28 +1,26 @@
 # ng-roadmap
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
-Node version 16.15.0
-npm v8.11.0
+*Proyecto generado con [Angular CLI](https://github.com/angular/angular-cli) versión 13.3.7.
+*Node version 16.15.0
+*npm v8.11.0*
 
-Some of the topics covered here were:
+Algunos de los tópicos cubiertos aquí fueron:
 
--One way data binding
--Two way data binding
--Events binding
--Pipes
--Template-driven forms
--Reactive forms
--Routing
--Lazy Loading
--Guards
--Observers
--HTTP requests
+*One way data binding
+*Two way data binding
+*Events binding
+*Pipes
+*Template-driven forms
+*Reactive forms
+*Routing
+*Lazy Loading
+*Guards
+*Observers
+*HTTP requests
 
-Angular learning roadmap followed by Blanca Arteaga
+Ruta de aprendizaje seguida por Blanca Arteaga
 
-ng-roadmap
-
-cities.app
+#Documentación del Proyecto
 
 La app tiene varias vistas:
     • Home
@@ -50,16 +48,17 @@ Si el usuario intenta acceder a un recurso que no existe, entonces se muestra un
 
 archivos en src/app
 
-1. App.component:
+##1. App.component:
 Contiene un archivo src/app/app.component.ts, que contiene un decorador @Component.
 Un decorador que es una declaración que modifica el comportamiento de una clase.
 El decorador @Component se importa a este componente desde ‘@angular/core’.
-El decorador @Component se declara en un archivo typescript (*.ts), e indica las rutas donde se pueden encontrar los archivos de estilo (*.scss) y de lenguaje de marcado (*.html) enlazados al componente.
+El decorador @Component se declara en un archivo typescript (ts) e indica las rutas donde se pueden encontrar los archivos de estilo scss y de lenguaje de marcado (html) enlazados al componente.
 Luego se declara la exportación de la clase.
 El componente no implementa métodos de ningún tipo.
 
 El archivo src/app/app.component.html contiene el llamado a otros componentes:
-1.1. app-spinner
+
+###1.1. app-spinner:
 
 Spinner.interceptor.ts: Contiene la lógica del HTTP interceptor, que se encarga de detectar el momento en que dichas peticiones se activan o desactivan.
 
@@ -73,8 +72,10 @@ El servicio spinnerSvc se inyecta en el constructor de la clase. El servicio es 
 
 Spinner.component.scss: Contiene los estilos del spinner.
 
-1.2. app-navbar: Es la barra de navegación, que nos permite movernos entre las tres vistas de la aplicación.
+###1.2. app-navbar:
+Es la barra de navegación, que nos permite movernos entre las tres vistas de la aplicación.
 Navbar.component.scss: Contiene algunos estilos de la barra de navegación. Otros estilos son aplicados con classes de Bootstrap.
 Navbar.component.html: Contiene la plantilla HTML de la barra de navegación.
 
-1.3. router-outlet: Es el componente que renderiza cada vista en la aplicación principal, en un elemento tipo root ubicado en app.component.html. Renderiza el componente que coincide con el array de rutas declarado en app.routing.module.ts.
+###1.3. router-outlet:
+Es el componente que renderiza cada vista en la aplicación principal, en un elemento tipo root ubicado en app.component.html. Renderiza el componente que coincide con el array de rutas declarado en app.routing.module.ts.
