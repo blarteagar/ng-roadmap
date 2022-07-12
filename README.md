@@ -34,8 +34,6 @@ Para trabajar con Angular se requiere la herramienta Angular CLI, que permite:
 
 Antes de describir cada una de estas características, se debe definir qué es Angular, los archivos que componen un proyecto de desarrollo web y cuáles son las piezas de código que conforman esta Plataforma.
 
-***
-
 ## 2. Resumen del proyecto
 En este proyecto se practicaron las principales características de Angular mediante el desarrollo de una aplicación usando:
 
@@ -64,7 +62,7 @@ El Template-driven Form es un formulario construido con directivas ngModel, para
 Users es un componente que se creó para probar la reacción de los Guards cuando se intenta acceder a un recurso para el cual no se cuenta con los permisos necesarios. Por esta razón, muestra un alert por defecto indicando que el usuario no cuenta con los permisos necesarios.
 Si el usuario intenta acceder a un recurso que no existe, entonces se muestra una página 404.
 
-1. Componente principal (App.component)
+## 1. Componente principal (App.component)
 Contiene un archivo src/app/app.component.ts, que contiene un decorador @Component.
 Un decorador que es una declaración que modifica el comportamiento de una clase.
 El decorador @Component se importa a este componente desde ‘@angular/core’.
@@ -81,14 +79,14 @@ En el decorador @Component, en el apartado template, se ha incorporado directame
 El servicio spinnerSvc se inyecta en el constructor de la clase. El servicio es privado y de sólo lectura.
 Spinner.component.scss: Contiene los estilos del spinner.
 
-### 1.2. app-navbar: Es la barra de navegación, que nos permite movernos entre las tres vistas de la aplicación.
+### 1.2. app-navbar: 
+Es la barra de navegación, que permite ir a las diferentes vistas de la aplicación.
 * Navbar.component.scss: Contiene algunos estilos de la barra de navegación. Otros estilos son aplicados con classes de Bootstrap.
 * Navbar.component.html: Contiene la plantilla HTML de la barra de navegación.
 
 
-### 1.3. router-outlet: Es el componente que renderiza cada vista en la aplicación principal, en un elemento tipo root ubicado en app.component.html. Renderiza el componente que coincide con el array de rutas declarado en app.routing.module.ts.
-
-***
+### 1.3. router-outlet: 
+Es el componente que renderiza cada vista en la aplicación principal, en un elemento tipo root ubicado en app.component.html. Renderiza el componente que coincide con el array de rutas declarado en app.routing.module.ts.
 
 ## 3. Estructura de un proyecto de Angular
 En la carpeta root (directorio raíz) del proyecto, se puede encontrar la estructura de archivos y carpetas que conforman el proyecto de Angular. Entre ellos, destacan los siguientes:
@@ -135,8 +133,6 @@ Angular, durante el desarrollo, utiliza el archivo environment.ts, y cuando se e
 
 A continuación, se describen los artefactos de Angular que permiten construir una aplicación web.
 
-***
-
 ## 4. Artefactos de Angular
 Angular está conformado por diversas piezas de código, entre ellas se cuentan las siguientes:
 * Modules
@@ -148,8 +144,6 @@ Angular está conformado por diversas piezas de código, entre ellas se cuentan 
 * Observers
 
 Cada uno de estos artefactos es, en esencia, una Clase de TypeScript modificada por un decorador, el cual por su parte es un tipo de atributo o declaración, capaz de transformar el comportamiento de dicha clase mediante una configuración.
-
-***
 
 ## 5. Componentes
 El bloque más pequeño de Angular es el Component (componente). En este caso el decorador se llama @Component y le otorga las siguientes propiedades:
@@ -166,15 +160,11 @@ Un componente B puede ser invocado desde un componente A, mediante una notación
 
 En ese caso, se dice que el componente A es padre del componente B, y a su vez, el componente B será hijo del componente A.
 
-***
-
 ## 6. One-way Data Binding
 La interpolación (one-way data binding) permite colocar el valor de algunas propiedades o expresiones, entre elementos HTML. Dentro de un componente, en el archivo TS se declaran las propiedades (variables) y se pueden llamar desde el archivo HTML correspondiente. 
 Sintaxis de ejemplo: 
 `<p> The value of the property is: {{property}} </p>`
 Donde property es una propiedad declarada en el archivo TS del componente. En el One Way Data Binding, las propiedades creadas en el archivo typescript son de sólo lectura, no se pueden modificar.
-
-***
 
 ## 7. Two-way Data Binding
 El enlace bidireccional permite enlazar una propiedad en el TS, imprimirla o tenerla en el HTML y modificar su valor simultáneamente desde el input.
@@ -185,16 +175,12 @@ La sintaxis del two-way data binding es conocida también como “banana in the 
 Para usarlo se debe importar el módulo de formularios en el archivo app.module.ts. 
 El two-way data binding genera un doble enlace que permite actualizar el valor de una propiedad renderizado en una UI, cada vez que cambia el valor de dicha propiedad en un input de HTML, o bien, si cambia su valor declarado en el archivo TS.
 
-***
-
 ## 8. Events Binding
 En enlace de eventos o “event binding” permite llamar un método en el momento en que ocurre un evento: Click de un botón, o bien, eventos personalizados. Suponiendo que estamos adjudicando un evento al click de un botón, su sintaxis puede resumirse como sigue:
 
 `<button (evento)=”metodo()”> Metodo </button>`
 
 Cada método debe ser declarado en el archivo de lógica TypeScript correspondiente.
-
-***
 
 ## 9. Pipes
 El cometido principal de los Pipes es transformar datos. Por ejemplo, dar formato a un string que contenga un nombre propio, donde se deba poner la primera letra en mayúscula, y las demás en minúsculas. Es posible crear Pipes (custom Pipes). Los Pipes pueden ser Puros o Impuros:
@@ -227,36 +213,81 @@ El método devolverá un array de strings que contendrá todos los valores que c
 
 * En el archivo app.component.html, donde se invoca el componente app-cities, en la directiva `*ngFor` donde se renderiza el array cities, se aplicará el Pipe: `ngFor=”let city of (cities | filter:criteria)”`.
 
-***
-
 ## 10. Template-driven Forms
+Los Formularios son una pieza muy importante en las aplicaciones, ya que permiten la interacción con el usuario a través del intercambio de datos.
 
-***
+Los formularios Template-driven form se recomiendan para tareas sencillas, como la recolección del correo electrónico para la suscripción a un newsletter, por ejemplo.
+Para formularios más avanzados, con campos anidados, y que requieran una lógica más compleja, así como escalabilidad, la mejor elección son los Formularios Reactivos.
+Para trabajar con los formularios template-driven, es muy importante que en el app.module.ts esté importado el módulo de los Forms de Angular FormsModule.
+
+Un ejemplo de formulario template-driven puede ser uno donde se solicite a un usuario su nombre, la confirmación de su mayoría de edad, el departamento con el que se desea comunicar y el mensaje que desea enviar. Para ello:
+
+Se crea un nuevo componente con los comandos de la CLI de Angular: ng g c contact. En el ejemplo se le dio el nombre “contact”.
+
+En el archivo contact.component.html, se inserta una etiqueta h1 para el título del formulario. A continuación, se inserta la etiqueta form, donde se anidarán las restantes etiquetas para delimitar los campos que conforman el formulario:
+
+Para cada campo, la estructura de etiquetas consta de: un <div> que envuelva todo el campo; un <label> para dar un título al campo; un <input> (cuyo tipo depende del propósito: “text”, “checkbox”, “select” y “textarea”) y finalmente un <div> para alojar el mensaje de error en caso de que el campo sea inválido.
+
+El primer campo corresponde al nombre del usuario. El input será type = “text”. La etiqueta label pondrá el texto “Nombre”. Los atributos label, id, name serán iguales a “name”. Se agrega el atributo required.
+
+El segundo campo corresponde a la verificación de la edad. El input será type = “checkbox”. La etiqueta label pondrá el texto “Are you over 18 years of age?”. Los atributos label, id, name serán iguales a “checkAdult”. Se agrega el atributo required.
+
+El tercer campo corresponde a un select con opciones: “Open this menu”, “marketing”, “sales”, “other”. El input será type = “select”. Los atributos label, id, name serán iguales a “department”. Este campo no es obligatorio, por tanto no se agrega el atributo required.
+
+El cuarto campo corresponde a un textarea, al que se le agrega un placeholder “Comment...” Los atributos label, id, name serán iguales a “comment”. Se agrega el atributo required.
+
+Se crea un div para alojar un botón. El type será “button”.
+
+La maquetación se hizo con Bootstrap.
+
+En la etiqueta form se incorpora una variable de referencia de plantilla (sintaxis: incorporar una almohadilla # al inicio del nombre de la variable). En el caso presente, será #contactForm, y se iguala con la directiva ngForm: #contactForm = ngForm . A partir de allí se tendrá acceso a las propiedades de la directiva, automáticamente Angular hace un seguimiento del formulario y sus campos. La variable de referencia #contactForm puede ser interpolada en etiquetas HTML al principio del formulario; pero antes se le debe aplicar el Pipe json, nativo de Angular, el cual transforma un objeto en JSON. De este objeto se debe seleccionar la propiedad value, que aloja el contenido del formulario: <pre> {{ contactForm.value | json }} </pre>
+
+Para asociar los campos al formulario puede hacerse un enlace unidireccional (One-way Data Binding). Se debe incluir la directiva ngModel en las etiquetas de apertura de los input de los campos.
+
+Se debe agregar funcionalidad al botón Send; para ello, en la etiqueta de apertura del formulario <form> se debe agregar el evento ngSubmit y asociarlo al método onSubmit(). Este método debe ser declarado en el archivo contact.component.ts.
+
+El método onSubmit( ) será creado en contact.component.ts. El método no devuelve nada (: void) y mostrará un console.log de los valores del fomulario: ‘Form Values’, y se imprimirá la propiedad values del objeto contactForm.
+
+Con el procedimiento anterior, los datos de los campos quedan enlazados al modelo del formulario, y van en dirección desde el input hacia el modelo. Es comunicación en una sola dirección (One-way data binding). Para casos donde se necesite cargar data en un formulario, se puede realizar un two-way data binding:
+
+A. Se copia el modelo tipo objeto del formulario, que contiene las propiedades y valores generadas por el formulario:
+
+{
+	“name”: “Blanca”,
+	“checkAdult”: true,
+	“department”: “marketing”,
+	“comment”: “Hello World!”
+}
+B. En el archivo contact.component.ts, debajo del área de importaciones y por arriba del decorador @Component, se crea la interface contactForm, que tiene la forma del objeto mostrado en el apartado A. Una interface permite llegar a un contrato de un modelado de datos. Entonces tenemos un name, que será un string, un checkAdult, que será un booleano, department que será un string, y comment, que también será un string:
+
+{
+	“name”: string;
+	“checkAdult”: boolean;
+	“department”: string;
+	“comment”: string;
+}
+C. Se crea un objeto model, debajo de la declaración de la clase del componente, y por arriba del constructor( ), para ser enlazado con el formulario:
+
+{
+	name: “”;
+	checkAdult: false;
+	department: “”;
+	comment: “”;
+}
+D. En el archivo contact.component.html, se utiliza la directiva ngModel con sintaxis de two-way data binding, y para cada nombre de campo, se asocia a las propiedades del modelo: [(ngModel)]=”name”.
+
+E. Cada propiedad puede leerse como una propiedad del objeto model. Por ejemplo, el nombre se recupera de model.name. En la aplicación, los datos estarán enlazados en doble vía. Lo que se ingresa en el formulario en el navegador, modifica el objeto, pero si el modelo model en el archivo contact.component.ts se inicializa con otras variables, estas también modificarán los valores correspondientes en el formulario, ya que sus campos están enlazados con el model de manera bidireccional.
 
 ## 11. Reactive Forms
 
-***
-
 ## 12. Routing
-
-***
 
 ## 13. Lazy Loading
 
-***
-
 ## 14. Guards
-
-***
 
 ## 15. Observables
 
-***
-
 ## 16. Services
 
-***
-
 ## 17. HTTP Requests
-
-***
