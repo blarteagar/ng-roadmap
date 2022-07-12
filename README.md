@@ -19,7 +19,8 @@
 
 ***
 
-## 1. Preámbulo: ¿Qué es Angular / Angular CLI?
+## 1. Preámbulo
+### ¿Qué es Angular / Angular CLI?
 * Angular es un framework para aplicaciones web.
 * Desarrollado en TypeScript (TS), de código abierto, mantenido por Google.
 * Su punto fuerte es la creación de SPA (single page applications).
@@ -32,10 +33,8 @@ Para trabajar con Angular se requiere la herramienta Angular CLI, que permite:
 * Ejecutar tareas de testing.
 * Realizar despliegue de la aplicación a producción.
 
-Antes de describir cada una de estas características, se debe definir qué es Angular, los archivos que componen un proyecto de desarrollo web y cuáles son las piezas de código que conforman esta Plataforma.
-
 ## 2. Resumen del proyecto
-En este proyecto se practicaron las principales características de Angular mediante el desarrollo de una aplicación usando:
+En este proyecto se practicaron las principales características de Angular, mediante el desarrollo de una aplicación, utilizando:
 
 * Angular CLI v.13.3.7
 * Node v.16.15.0
@@ -62,7 +61,7 @@ El Template-driven Form es un formulario construido con directivas ngModel, para
 Users es un componente que se creó para probar la reacción de los Guards cuando se intenta acceder a un recurso para el cual no se cuenta con los permisos necesarios. Por esta razón, muestra un alert por defecto indicando que el usuario no cuenta con los permisos necesarios.
 Si el usuario intenta acceder a un recurso que no existe, entonces se muestra una página 404.
 
-## 1. Componente principal (App.component)
+### Componente principal (App.component)
 Contiene un archivo src/app/app.component.ts, que contiene un decorador @Component.
 Un decorador que es una declaración que modifica el comportamiento de una clase.
 El decorador @Component se importa a este componente desde ‘@angular/core’.
@@ -71,7 +70,7 @@ Luego se declara la exportación de la clase.
 El componente no implementa métodos de ningún tipo.
 El archivo src/app/app.component.html contiene el llamado a otros componentes:
 
-### 1.1. app-spinner
+#### app-spinner
 Spinner.interceptor.ts: Contiene la lógica del HTTP interceptor, que se encarga de detectar el momento en que dichas peticiones se activan o desactivan.
 Spinner.service.ts: Se usa para alojar los métodos de mostrar y ocultar del spinner, que dependen del Observable isLoading$.
 Spinner.component.ts: En la parte superior contiene las importaciones necesarias.
@@ -79,13 +78,13 @@ En el decorador @Component, en el apartado template, se ha incorporado directame
 El servicio spinnerSvc se inyecta en el constructor de la clase. El servicio es privado y de sólo lectura.
 Spinner.component.scss: Contiene los estilos del spinner.
 
-### 1.2. app-navbar: 
+#### app-navbar: 
 Es la barra de navegación, que permite ir a las diferentes vistas de la aplicación.
 * Navbar.component.scss: Contiene algunos estilos de la barra de navegación. Otros estilos son aplicados con classes de Bootstrap.
 * Navbar.component.html: Contiene la plantilla HTML de la barra de navegación.
 
 
-### 1.3. router-outlet: 
+#### router-outlet: 
 Es el componente que renderiza cada vista en la aplicación principal, en un elemento tipo root ubicado en app.component.html. Renderiza el componente que coincide con el array de rutas declarado en app.routing.module.ts.
 
 ## 3. Estructura de un proyecto de Angular
@@ -162,17 +161,19 @@ En ese caso, se dice que el componente A es padre del componente B, y a su vez, 
 
 ## 6. One-way Data Binding
 La interpolación (one-way data binding) permite colocar el valor de algunas propiedades o expresiones, entre elementos HTML. Dentro de un componente, en el archivo TS se declaran las propiedades (variables) y se pueden llamar desde el archivo HTML correspondiente. 
-Sintaxis de ejemplo: 
+Sintaxis de ejemplo:
+
 `<p> The value of the property is: {{property}} </p>`
-Donde property es una propiedad declarada en el archivo TS del componente. En el One Way Data Binding, las propiedades creadas en el archivo typescript son de sólo lectura, no se pueden modificar.
+
+Donde property es una propiedad declarada en el archivo TS del componente. En el One Way Data Binding, las propiedades creadas en el archivo TypeScript son de sólo lectura, no se pueden modificar.
 
 ## 7. Two-way Data Binding
 El enlace bidireccional permite enlazar una propiedad en el TS, imprimirla o tenerla en el HTML y modificar su valor simultáneamente desde el input.
-La sintaxis del two-way data binding es conocida también como “banana in the box” porque la caja serían los corchetes y la bananita serían los paréntesis. Ejemplo:
+La sintaxis del two-way data binding es conocida también como “banana in the box” porque la caja serían los corchetes y la banana serían los paréntesis. Ejemplo:
 
 `<input type=”text” [(ngModel)]=”name”>`
 
-Para usarlo se debe importar el módulo de formularios en el archivo app.module.ts. 
+Para usarlo se debe importar el módulo de formularios AngularFormsModule en el archivo app.module.ts. 
 El two-way data binding genera un doble enlace que permite actualizar el valor de una propiedad renderizado en una UI, cada vez que cambia el valor de dicha propiedad en un input de HTML, o bien, si cambia su valor declarado en el archivo TS.
 
 ## 8. Events Binding
@@ -216,75 +217,214 @@ El método devolverá un array de strings que contendrá todos los valores que c
 ## 10. Template-driven Forms
 Los Formularios son una pieza muy importante en las aplicaciones, ya que permiten la interacción con el usuario a través del intercambio de datos.
 
-Los formularios Template-driven form se recomiendan para tareas sencillas, como la recolección del correo electrónico para la suscripción a un newsletter, por ejemplo.
-Para formularios más avanzados, con campos anidados, y que requieran una lógica más compleja, así como escalabilidad, la mejor elección son los Formularios Reactivos.
-Para trabajar con los formularios template-driven, es muy importante que en el app.module.ts esté importado el módulo de los Forms de Angular FormsModule.
+* Los formularios Template-driven form se recomiendan para tareas sencillas, como la recolección del correo electrónico para la suscripción a un newsletter, por ejemplo.
+* Para formularios más avanzados, con campos anidados, y que requieran una lógica más compleja, así como escalabilidad, la mejor elección son los Formularios Reactivos.
+* Para trabajar con los formularios template-driven, es muy importante que en el app.module.ts esté importado el módulo de los Forms de Angular FormsModule.
 
-Un ejemplo de formulario template-driven puede ser uno donde se solicite a un usuario su nombre, la confirmación de su mayoría de edad, el departamento con el que se desea comunicar y el mensaje que desea enviar. Para ello:
+Un ejemplo de formulario sencillo puede ser uno de contacto, donde se solicite a un usuario su nombre, la confirmación de su mayoría de edad, el departamento con el que se desea comunicar y el mensaje que desea enviar. Para ello:
 
-Se crea un nuevo componente con los comandos de la CLI de Angular: ng g c contact. En el ejemplo se le dio el nombre “contact”.
+1. Se crea un nuevo componente con los comandos de la CLI de Angular: `ng g c contact`. En el ejemplo se le dio el nombre “contact”.
 
-En el archivo contact.component.html, se inserta una etiqueta h1 para el título del formulario. A continuación, se inserta la etiqueta form, donde se anidarán las restantes etiquetas para delimitar los campos que conforman el formulario:
+2. En el archivo contact.component.html, se inserta una etiqueta h1 para el título del formulario. A continuación, se inserta la etiqueta form, donde se anidarán las restantes etiquetas para delimitar los campos que conforman el formulario:
 
-Para cada campo, la estructura de etiquetas consta de: un <div> que envuelva todo el campo; un <label> para dar un título al campo; un <input> (cuyo tipo depende del propósito: “text”, “checkbox”, “select” y “textarea”) y finalmente un <div> para alojar el mensaje de error en caso de que el campo sea inválido.
+3. Para cada campo, la estructura de etiquetas consta de: un `<div>` que envuelva todo el campo; un `<label>` para dar un título al campo; un `<input>` (cuyo tipo depende del propósito: “text”, “checkbox”, “select” y “textarea”) y finalmente un `<div>` para alojar un mensaje de error que ga "El campo es requerido", para el caso en que el campo sea inválido.
 
-El primer campo corresponde al nombre del usuario. El input será type = “text”. La etiqueta label pondrá el texto “Nombre”. Los atributos label, id, name serán iguales a “name”. Se agrega el atributo required.
+4. El primer campo corresponde al nombre del usuario. El input será type = “text”. La etiqueta label pondrá el texto “Nombre”. Los atributos label, id, name serán iguales a “name”. Se incluye también el atributo required.
 
-El segundo campo corresponde a la verificación de la edad. El input será type = “checkbox”. La etiqueta label pondrá el texto “Are you over 18 years of age?”. Los atributos label, id, name serán iguales a “checkAdult”. Se agrega el atributo required.
+5. El segundo campo corresponde a la verificación de la edad. El input será type = “checkbox”. La etiqueta label pondrá el texto “Are you over 18 years of age?”. Los atributos label, id, name serán iguales a “checkAdult”. Se agrega el atributo required.
 
-El tercer campo corresponde a un select con opciones: “Open this menu”, “marketing”, “sales”, “other”. El input será type = “select”. Los atributos label, id, name serán iguales a “department”. Este campo no es obligatorio, por tanto no se agrega el atributo required.
+6. El tercer campo corresponde a un select con opciones: “Open this menu”, “marketing”, “sales”, “other”. El input será type = “select”. Los atributos label, id, name serán iguales a “department”. Este campo no es obligatorio, por tanto no se agrega el atributo required.
 
-El cuarto campo corresponde a un textarea, al que se le agrega un placeholder “Comment...” Los atributos label, id, name serán iguales a “comment”. Se agrega el atributo required.
+7. El cuarto campo corresponde a un textarea, al que se le agrega un placeholder “Comment...” Los atributos label, id, name serán iguales a “comment”. Se agrega el atributo required.
 
-Se crea un div para alojar un botón. El type será “button”.
+8. Se crea un `<div>` para alojar un botón. El type será “button”.
 
-La maquetación se hizo con Bootstrap.
+9. Puede utilizarse Bootstrap para maquetar los campos del formulario.
 
-En la etiqueta form se incorpora una variable de referencia de plantilla (sintaxis: incorporar una almohadilla # al inicio del nombre de la variable). En el caso presente, será #contactForm, y se iguala con la directiva ngForm: #contactForm = ngForm . A partir de allí se tendrá acceso a las propiedades de la directiva, automáticamente Angular hace un seguimiento del formulario y sus campos. La variable de referencia #contactForm puede ser interpolada en etiquetas HTML al principio del formulario; pero antes se le debe aplicar el Pipe json, nativo de Angular, el cual transforma un objeto en JSON. De este objeto se debe seleccionar la propiedad value, que aloja el contenido del formulario: <pre> {{ contactForm.value | json }} </pre>
+10. En la etiqueta form se incorpora una variable de referencia de plantilla (sintaxis: incorporar una almohadilla `#` al inicio del nombre de la variable). En el caso presente, será `#contactForm`, y se iguala con la directiva ngForm: `#contactForm = ngForm`. A partir de allí se tendrá acceso a las propiedades de la directiva, pues automáticamente Angular hace un seguimiento del formulario y sus campos. La variable de referencia `#contactForm` puede ser interpolada en etiquetas HTML al principio del formulario; pero antes se le debe aplicar el Pipe json, nativo de Angular, el cual transforma un objeto en JSON. De este objeto se debe seleccionar la propiedad value, que aloja el contenido del formulario: `<pre> {{ contactForm.value | json }} </pre>`.
 
-Para asociar los campos al formulario puede hacerse un enlace unidireccional (One-way Data Binding). Se debe incluir la directiva ngModel en las etiquetas de apertura de los input de los campos.
+11. Para asociar los campos al formulario puede hacerse un enlace unidireccional (One-way Data Binding). Se debe incluir la directiva ngModel en las etiquetas de apertura de los input de los campos.
 
-Se debe agregar funcionalidad al botón Send; para ello, en la etiqueta de apertura del formulario <form> se debe agregar el evento ngSubmit y asociarlo al método onSubmit(). Este método debe ser declarado en el archivo contact.component.ts.
+12. Se debe agregar funcionalidad al botón Send; para ello, en la etiqueta de apertura del formulario <form> se debe agregar el evento ngSubmit y asociarlo al método onSubmit(). Este método debe ser declarado en el archivo contact.component.ts.
 
-El método onSubmit( ) será creado en contact.component.ts. El método no devuelve nada (: void) y mostrará un console.log de los valores del fomulario: ‘Form Values’, y se imprimirá la propiedad values del objeto contactForm.
+13. El método onSubmit( ) será creado en contact.component.ts. El método no devuelve nada (: void) y mostrará un console.log de los valores del fomulario: ‘Form Values’, y se imprimirá la propiedad values del objeto contactForm.
 
 Con el procedimiento anterior, los datos de los campos quedan enlazados al modelo del formulario, y van en dirección desde el input hacia el modelo. Es comunicación en una sola dirección (One-way data binding). Para casos donde se necesite cargar data en un formulario, se puede realizar un two-way data binding:
 
 A. Se copia el modelo tipo objeto del formulario, que contiene las propiedades y valores generadas por el formulario:
 
+```
 {
 	“name”: “Blanca”,
 	“checkAdult”: true,
 	“department”: “marketing”,
 	“comment”: “Hello World!”
 }
-B. En el archivo contact.component.ts, debajo del área de importaciones y por arriba del decorador @Component, se crea la interface contactForm, que tiene la forma del objeto mostrado en el apartado A. Una interface permite llegar a un contrato de un modelado de datos. Entonces tenemos un name, que será un string, un checkAdult, que será un booleano, department que será un string, y comment, que también será un string:
+```
 
+ B. En el archivo contact.component.ts, debajo del área de importaciones y por arriba del decorador @Component, se crea la interface contactForm, que tiene la forma del objeto mostrado en el apartado A. Una interface permite llegar a un contrato de un modelado de datos. Entonces tenemos un name, que será un string, un checkAdult, que será un booleano, department que será un string, y comment, que también será un string:
+
+```
 {
 	“name”: string;
 	“checkAdult”: boolean;
 	“department”: string;
 	“comment”: string;
 }
+```
+
 C. Se crea un objeto model, debajo de la declaración de la clase del componente, y por arriba del constructor( ), para ser enlazado con el formulario:
 
+```
 {
 	name: “”;
 	checkAdult: false;
 	department: “”;
 	comment: “”;
 }
-D. En el archivo contact.component.html, se utiliza la directiva ngModel con sintaxis de two-way data binding, y para cada nombre de campo, se asocia a las propiedades del modelo: [(ngModel)]=”name”.
+```
 
-E. Cada propiedad puede leerse como una propiedad del objeto model. Por ejemplo, el nombre se recupera de model.name. En la aplicación, los datos estarán enlazados en doble vía. Lo que se ingresa en el formulario en el navegador, modifica el objeto, pero si el modelo model en el archivo contact.component.ts se inicializa con otras variables, estas también modificarán los valores correspondientes en el formulario, ya que sus campos están enlazados con el model de manera bidireccional.
+D. En el archivo contact.component.html, se utiliza la directiva ngModel con sintaxis de two-way data binding, y para cada nombre de campo, se asocia a las propiedades del modelo. Por ejemplo, el valor `name` se recupera de `model.name`: `[(ngModel)]=”model.name”`.
+
+E. En la aplicación, los datos estarán enlazados en doble vía. Lo que se ingresa en el formulario en el navegador, modifica el objeto, pero si el modelo `model` en el archivo contact.component.ts se inicializa con otras variables, estas también modificarán los valores correspondientes en el formulario, ya que sus campos están enlazados con el model de manera bidireccional.
+
+Es importante realizar validaciones de los valores introducidos en los formularios. Para ello, Angular Forms cuenta con propiedades como `value`, `valid`, `pristine`, `dirty`, `touched`, que permiten validar el formulario en general, pero también cada uno de los campos de manera individual. Por ejemplo, `pristine` verifica que el campo no haya cambiado aún desde su valor inicial. También es necesario occultar mensajes de error que no correspondan. Para validar los valores en campos de formularios, se puede proceder como sigue:
+
+1. Para cada campo, en el `<div>` del mensaje de error, se incluye el atributo hidden y se iguala a (property).valid, para asegurar que el mensaje permanezca oculto mientras el campo en cuestión sea válido. Otra condición que debe cumplirse para mantener oculto el mensaje de error, es que el usuario no haya modificado el valor del input; para ello se usa la propiedad `pristine`. La condición del atributo hidden, en el campo name, quedaría de este modo: `[hidden]="name.valid || name.pristine".
+
+2. Este procedimiento se repite para cada campo.
+
+3. El botón de Enviar puede permanecer deshabilitado mientras el formulario sea inválido. Sólo se podrá activar ese botón cuando el formulario sea válido. Para ello, en contact.component.html, en la etiqueta de apertura del botón se incorpora la directiva `[disabled]="contactForm.invalid"`
+
+4. También es posible validar el formulario desde contact.component.ts. Si en el método onSubmit( ) se recibe el formulario completo, se podrían invocar las propiedades del objeto. Si (property).valid es true, se activa el botón; de lo contrario, se mantiene desactivado.
 
 ## 11. Reactive Forms
 
+Los Reactive Forms se originan en una clase que se llama AbstractControl, la cual tiene varias subclases.
+
+Las directivas de Reactive Forms son: FormGroup, FormControl, FormControlName, FormGroupName y FormArrayName.
+
+Se considera que los formularios template-driven se deben emplear cuando las tareas son de lógica sencilla y se tienen muy pocos campos. Los reactivos, por su parte, se emplean cuando los campos están anidados y se requiere una lógica más compleja, así como escalabilidad del componente. Sin embargo, es posible usar los dos enfoques en una misma aplicación, siempre y cuando cada tipo de formulario se utilice en la tarea más adecuada.
+
+* Para un formulario con un solo input, se usa el FormControl.
+* Para un formulario con varios inputs, se usa el FormGroup.
+
+Para ilustrar el funcionamiento de los formularios reactivos, se utilizará la misma estructura HTML del apartado anterior (Template-driven Forms), y a partir de la misma se realizarán los cambios necesarios. Específicamente se verá el uso de FormControlName y de FormControl.
+
+1. Se genera un nuevo componente con el siguiente comando de la CLI de Angular:
+`ng g c contact-reactive`.
+
+2. En app.component.html, se invoca el componente `<app-contact-reactive></app-contact-reactive>`.
+
+3. Para trabajar con formularios reactivos se debe importar el módulo de formularios reactivos `ReactiveFormsModule`: En app.module.ts, incorporarlo en el apartado de imports, y también escribir la sentencia de importación desde @angular/forms en el área de importaciones en la parte superior de ese mismo archivo.
+4. En el archivo del template-driven form, `contact.component.html`, se copia el código HTML y se pega en `contact-reactive.component.html`.
+
+5. Se elimina el código HTML que propicia la renderización del objeto asociado al form (`{{contactForm.value | json}}`) y el párrafo con el mensaje inicial del componente: `reactive.contact works!`.
+
+6. En reactive forms no se requiere ngModel ni template variable; en su lugar se emplea FormControlName y debe asociarse al `name` del campo. Esto debe hacerse para cada uno de los campos. Por ejemplo, para el campo `name`, la etiqueta de apertura del input quedaría así:
+
+`<input type=“text” class=“form-control” id=“name” name=“name” formControlName=”name” required>`
+
+7. Para gestionar el formulario reactivo: En la etiqueta `<form>` que envuelve todo el formulario reactivo, se incorpora la directiva FormGroup y se iguala al nombre del formulario, (en este caso `contactForm`). Esa propiedad no existe, debe crearse en reactive-contact.component.ts.
+
+8. En reactive-contact.component.ts, debajo del método ngOnInit( ), se escribe el método onSubmit( ), que no devuelve nada, y que solamente consta de un console.log( ) que muestre los valores del formulario:
+
+```
+onSubmit(): void {
+	console.log(‘Form -> ‘, this.contactForm.value);
+}
+```
+
+9. Debajo de la sentencia de exportación de la clase, se crea la propiedad contactForm, se le asigna el tipo FormGroup. Como no se está inicializando, se adjunta un signo de exclamación al nombre de la variable: `contactForm!: FormGroup;`
+
+*Existen varias clases para trabajar con los formularios reactivos. Por ejemplo, FormControl (cuando se tiene un solo input). En este caso se puede crear una propiedad (“`myField`”, por ejemplo) e igualarla a FormControl; así, este campo hereda del FormControl y da acceso a todas las propiedades de FormControl. Si se desea ver cada vez que cambie el valor de ese input (`this.myField.valueChanges`, esto realmente es un Observable), se puede hacer. No se hará aquí, pero es importante conocer esta opción.*
+
+10. Se utilizará FormGroup. Se recomienda escribir el método initForm( ), que va a devolver un FormGroup. Aquí se declaran las propiedades del formulario, para ello se utiliza `FormBuilder`, que se debe importar en el constructor( ). 
+`constructor(private readonly fb: FormBuilder) { }`
+`FormBuilder` y `FormGroup` se importan desde ‘@angular/forms’, asegurarse de tener las importaciones declaradas.
+
+11. El método initForm( ) trabajará con `this.fb.group`. Este método espera un objeto, que define los campos. En cada uno, se sigue la misa sintaxis: En el caso de `name`, se ponen dos puntos, se abren corchetes, y el primer argumento es el valor por defecto (se dejará vacío). Se pone una coma y se escriben las validaciones, que puede ser sólo una, o bien, un array. Para trabajar con las validaciones se debe importar `validators` desde ‘@angular/forms’. Al poner un punto, se pueden ver todos los métodos y propiedades a los que se tiene acceso en el formulario. Por ejemplo, es posible validar que ese campo es requerido, o también, por ejemplo, que el campo `name` tenga un mínimo de, por ejemplo, tres caracteres. En cuanto a los otros campos: `checkAdult` y `comment`, estos son requeridos. Por su parte `department` no es requerido ni necesita validación; por lo tanto, el método initForm( ) quedará de esta manera:
+```
+initForm(): FormGroup {
+	return this.fb.group({
+		name: [‘’, [Validators.required, Validators.minlength(3)]],
+		checkAdult: [‘’, Validators.required],
+		department: [‘’],
+		comment: [‘’, Validators.required],
+	})
+}
+```
+
+12. Y en el método ngOnInit, la propiedad contactForm se igualará a lo que devuelva el método initForm( ). Ya esta propiedad tiene el modelo de datos descrito en initFom:
+```
+ngOnInit(): void {
+	this.contactForm = this.initForm();
+}
+```
+
+#### Validaciones en Reactive Forms
+En template-driven forms se utilizó una directiva/atributo `hidden` y se evaluaron las condiciones en que el campo era `valid` o `pristine` (no modificado por el usuario). En reactive forms, esa directiva será eliminada, y en su lugar se utiliza la directiva ngIf en el `<div>` con el mensaje de error, bajo la condición: será impreso si el campo ha sido tocado, y también, si el campo es inválido. 
+
+A. Para acceder al formulario se usa la propiedad contactForm.get(); entre paréntesis se debe pasar el nombre del campo en forma de string; en este caso, name. También se debe acceder a la propiedad `errors`, que sólo existe cuando se presentan errores, por eso, cuando esta se invoca se debe utilizar question mark (`?`): para asegurar que la propiedad existe (ya que pdría ser null). La directiva ngIf queda de la siguiente manera:
+
+`*ngIf=”contactForm.get(‘name’)?.touched && contactForm.get(‘name’)?.errors?.[‘required’]”`
+
+B. Para validar que el campo `name` sea de mínimo 3 caracteres, se usa una estructura de validación similar a la anterior. Debe verificarse, de nuevo, que el campo haya sido `touched` por el usuario, y en la segunda condición, en lugar del `required`, se incorpora la propiedad `minlength`. El mensaje de error en este caso es: `Name must be longer than 3 characters`:
+
+`*ngIf=”contactForm.get(‘name’)?.touched && contactForm.get(‘name’)?.errors?.[‘minlength’]”`
+
+Para especificar de manera dinámica la cantidad de caracteres de `name` en base a la cantidad establecida en minlength (método initForm( ) del archivo contact-reactive.component.ts), se interpola la lógica de validación de minlength utilizado en la línea anterior en el mensaje de error. al invocar la propiedad requiredlength. Posteriormente, en el método initForm( ) especificar un nuevo argumento para minlength (número entero). El `<div>` contentivo del mensaje de error queda como sigue:
+
+`<div *ngIf=”contactForm.get(‘name’)?.touched && contactForm.get(‘name’)?.errors?.[‘required’]” class=”alert alert-danger”> Name must be longer than {{ contactForm.get(‘name’)?.errors?.[‘minlength’].requiredlength }} characters </div>`
+
+Para manejar el error generado cuando el campo se deja en blanco y es obligatorio, el `<div>` contentivo del mensaje de error queda como sigue:
+
+`<div *ngIf=”contactForm.get(‘name’)?.touched && contactForm.get(‘name’)?.errors?.[‘required’]” class=”alert alert-danger”> Name must be longer than {{ contactForm.get(‘name’)?.errors?.[‘minlength’].requiredlength }} characters </div>`
+
+Las validaciones de errores se escribieron en el archivo HTML pero se pueden llevar a TS, mediante la escritura de varios métodos en los que se pueda comprobar el nombre del campo y manejar los errores generados. Esto da facilidad para agregar unit tests.
+
+#### Diferencia entre los Métodos patchValue( ) y setValue( )
+1. Dentro del archivo reactive-contact.component.ts se escribe el método onPatchValue( ), no va a devolver nada, y dentro del método se accede al formulario (this.contactForm). Se utiliza el método patchValue( ), al que se le puede pasar un objeto, donde se puede indicar uno o varios campos. El método onPatchValue() será llamado desde ngOnInit(), con la línea this.onPatchValue():
+```
+ngOnInit(): void {
+	this.contactForm = this.initForm();
+	this.onPatchValue();
+}
+ngOnInit(): void {
+	this.contactForm.patchValue({name: ‘Natalia’});
+}
+```
+
+2. Al abrir la aplicación en el navegador, se observa que en el campo de nombre del formulario, aparece el nombre asignado en el objeto (‘Natalia’), ya que patchValue( ) permite escoger algunas propiedades y asignarles valores sin ningún problema.
+
+3. Se escribe el método onSetValue( ), donde se invoca al método setValue( ). Este método también espera un objeto. Se le envía el siguiente: `{comment: ‘Hola Mundo!’}`. Y se llama en el método ngOnInit( ), al igual que onPatchValue( ); este último método será comentado temporalmente, a fin de ver el resultado de onSetValue( ).
+
+```
+ngOnInit(): void {
+	this.contactForm = this.initForm();
+	this.onPatchValue();
+	this.onSetValue();
+}
+//ngOnPatchValue(): void {
+	//this.contactForm.patchValue({name: ‘Natalia’});
+}
+ngOnSetValue(): void {
+	this.contactForm.setValue({comment: ‘Hola Mundo!’});
+}
+```
+
+Al correr la aplicación en el navegador, en la consola se obtiene este error: `Must set a name for name property`. Esto ocurre porque el método setValue( ) obliga a asignar valores a todas las propiedades del formulario.
+
+
 ## 12. Routing
+
+
 
 ## 13. Lazy Loading
 
+
 ## 14. Guards
+
 
 ## 15. Observables
 
