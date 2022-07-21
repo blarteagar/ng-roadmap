@@ -11,7 +11,7 @@
 * [10. Template-driven Forms](#10-template-driven-forms)
 * [11. Reactive Forms](#11-reactive-forms)
 * [12. Routing](#12-routing)
-* [13. QueryParams en Routing de Angular](#13-query-params-en-routing-de-angular)
+* [13. QueryParams en Routing de Angular](#13-queryparams-en-routing-de-angular)
 * [14. Parámetros en Routing de Angular](#14-parámetros-en-routing-de-angular)
 * [15. Rutas hijas](#15-rutas-hijas)
 * [16. Guards](#16-guards)
@@ -339,7 +339,6 @@ Es importante realizar validaciones de los valores introducidos en los formulari
 
 ## 11. Reactive Forms
 
-
 Los Reactive Forms se originan en una clase que se llama AbstractControl, la cual tiene varias subclases.
 
 Las directivas de Reactive Forms son: FormGroup, FormControl, FormControlName, FormGroupName y FormArrayName.
@@ -459,7 +458,7 @@ ngOnSetValue(): void {
 Al correr la aplicación en el navegador, en la consola se obtiene este error: `Must set a name for name property`. Esto ocurre porque el método setValue( ) obliga a asignar valores a todas las propiedades del formulario.
 
 
-## 12. Routing en Angular
+## 12. Routing
 
 
 Las rutas permiten:
