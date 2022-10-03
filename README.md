@@ -75,7 +75,7 @@ Users es un componente que se creó para probar la reacción de los Guards cuand
 Si el usuario intenta acceder a un recurso que no existe, entonces se muestra una página 404.
 
 ### Componente principal (App.component)
-Contiene un archivo `src/app/app.component.ts`, que contiene un decorador `@Component.
+Contiene un archivo `src/app/app.component.ts`, que contiene un decorador `@Component`.
 Un decorador que es una declaración que modifica el comportamiento de una clase.
 El decorador @Component se importa a este componente desde `'@angular/core'`.
 El decorador @Component se declara en un archivo typescript, e indica las rutas donde se pueden encontrar los archivos de estilo y de lenguaje de marcado enlazados al componente.
